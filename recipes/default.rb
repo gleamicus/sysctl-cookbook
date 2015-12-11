@@ -23,8 +23,8 @@
 template node[:sysctl][:config_file] do
   action :nothing
   source 'sysctl.erb'
-  owner 'root'
-  group 'root'
+  owner node['root_user']
+  group node['root_group']
   mode 0644
   variables(sysctl_entries: Array.new)
 end

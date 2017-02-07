@@ -29,6 +29,11 @@ template node[:sysctl][:config_file] do
   variables(sysctl_entries: Array.new)
 end
 
+directory '/etc/sysctl.d' do
+  mode 00755
+  only_if { node[:sysctl][:config_file] == '/etc/sysctl.d/99-chef.conf' }
+end
+
 accumulator 'sysctl.conf' do
   target template: node[:sysctl][:config_file]
   filter { |resource| resource.is_a? Chef::Resource::Sysctl }

@@ -1,4 +1,4 @@
-node.set[:sysctl][:values]= {
+node.normal[:sysctl][:values]= {
   "net.ipv4.conf.default.rp_filter" => 1,
   "net.ipv4.conf.default.accept_source_route" => 0
 }
@@ -17,8 +17,8 @@ sysctl "fs.file-max" do
   save  false # not store in node[:sysctl]
 end
 
-sysctl "net.ipv4.ip_forward" do  
-  value 0  
+sysctl "net.ipv4.ip_forward" do
+  value 0
 end
 
 

@@ -21,8 +21,11 @@
 #
 
 # values from attributes and roles
-node[:sysctl][:values].each_pair do |k, v|
-  sysctl k do
+values = node['sysctl']['values']
+
+values.each_pair do |k, v|
+  sysctl "set #{k} to #{v}" do
+    name k
     value v
   end
 end
